@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Error de conexión</title>
+<link rel="stylesheet" th:href="@{/css/estilos.css}"></head>
+<body><main class="contenedor pequeno">
+    <h1>No se pudo completar la operación</h1>
+    <p class="alerta" th:text="${error}">Error del servicio</p>
+    <p>Comprueba que el servidor REST esté encendido y que tu token no haya expirado.</p>
+    <p><a th:href="@{/login}">Volver a iniciar sesión</a></p>
+</main></body></html>

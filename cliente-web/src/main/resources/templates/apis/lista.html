@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Listado de APIs</title>
+<link rel="stylesheet" th:href="@{/css/estilos.css}"></head>
+<body><main class="contenedor">
+    <header class="barra">
+        <div><h1>Listado de APIs</h1>
+            <p th:text="|Sesión: ${session.usuario} · Rol: ${session.rol}|">Usuario</p></div>
+        <form th:action="@{/logout}" method="post"><button class="secundario" type="submit">Cerrar sesión</button></form>
+    </header>
+    <p class="exito" th:if="${mensaje != null}" th:text="${mensaje}"></p>
+    <!-- Solo ADMIN puede crear; el permiso verdadero también se verifica en el servidor. -->
+    <p th:if="${session.rol == 'ADMIN'}"><a class="boton" th:href="@{/apis/nuevo}">Registrar nueva API</a></p>
+    <table><thead><tr><th>ID</th><th>Nombre</th><th>Versión</th><th>Fecha</th><th>Estado</th><th>Equipo</th><th>Acciones</th></tr></thead>
+    <tbody>
+    <!-- th:each de la clase Thymeleaf: recorre listaApis del Model. -->
+    <tr th:each="api : ${listaApis}">
+        <td th:text="${api.id}"></td>
+        <td th:text="${api.nombre}"></td>
+        <td th:text="${api.version}"></td>
+        <td th:text="${api.fechaRegistro}"></td>
+        <td th:text="${api.estado}"></td>
+        <td th:text="${api.equipo.nombre}"></td>
+        <td>
+            <a th:href="@{/apis/{id}(id=${api.id})}">Ver</a>
+            <span th:if="${session.rol == 'ADMIN'}">
+                | <a th:href="@{/apis/editar/{id}(id=${api.id})}">Editar</a>
+                <form class="en-linea" th:action="@{/apis/eliminar/{id}(id=${api.id})}" method="post">
+                    <button class="enlace-peligro" type="submit" onclick="return confirm('¿Eliminar esta API y sus endpoints?')">Eliminar</button>
+                </form>
+            </span>
+        </td>
+    </tr>
+    </tbody></table>
+    <p th:if="${#lists.isEmpty(listaApis)}">Todavía no hay APIs registradas.</p>
+</main></body></html>

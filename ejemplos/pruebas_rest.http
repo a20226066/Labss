@@ -1,0 +1,37 @@
+### IntelliJ HTTP Client (requiere colocar el token real luego de hacer login)
+@base = http://localhost:8080
+@token = PEGAR_AQUI_EL_TOKEN_DEVUELTO_POR_LOGIN
+
+### 1) Conseguir JWT con Basic Auth (puedes usar credenciales: admin/Admin123!)
+# El IDE puede pedirte confirmar la autenticación básica.
+GET {{base}}/login
+Authorization: Basic admin Admin123!
+
+### 2) GET protegido: funciona con USER y ADMIN
+GET {{base}}/api/api
+Authorization: Bearer {{token}}
+
+### 3) POST protegido: SOLO ADMIN
+POST {{base}}/api/api
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nombre": "API de Reportes",
+  "version": "1.0",
+  "fecha_registro": "2026-11-05",
+  "estado": "activa",
+  "equipo_id": 1
+}
+
+### 4) GET de equipos
+GET {{base}}/api/equipo
+Authorization: Bearer {{token}}
+
+### 5) GET de endpoints
+GET {{base}}/api/endpoint
+Authorization: Bearer {{token}}
+
+### 6) Probar token inválido (esperado: 401 + JSON TOKEN_INVALID)
+GET {{base}}/api/api
+Authorization: Bearer token_falso

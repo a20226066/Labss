@@ -1,0 +1,12 @@
+# Maven / IntelliJ
+**/target/
+**/.idea/
+**/*.iml
+*.class
+*.log
+# Configuración local de secretos y entorno
+.env
+.env.*
+# Archivos temporales
+.DS_Store
+Thumbs.db

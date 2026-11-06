@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Formulario de API</title>
+<link rel="stylesheet" th:href="@{/css/estilos.css}"></head>
+<body><main class="contenedor pequeno">
+    <h1 th:text="${api.id == null ? 'Registrar API' : 'Editar API'}">Formulario</h1>
+    <!-- @ModelAttribute("api") del Controller equivale a th:object="${api}". -->
+    <form th:action="@{/apis/guardar}" th:object="${api}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <label>Nombre<input type="text" th:field="*{nombre}" maxlength="150"></label>
+        <p class="alerta" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+        <label>Versión<input type="text" th:field="*{version}"></label>
+        <p class="alerta" th:if="${#fields.hasErrors('version')}" th:errors="*{version}"></p>
+        <label>Fecha de registro<input type="date" th:field="*{fechaRegistro}"></label>
+        <p class="alerta" th:if="${#fields.hasErrors('fechaRegistro')}" th:errors="*{fechaRegistro}"></p>
+        <label>Estado
+            <select th:field="*{estado}">
+                <option value="">Seleccionar...</option>
+                <option value="activa">Activa</option>
+                <option value="deprecada">Deprecada</option>
+            </select>
+        </label>
+        <p class="alerta" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></p>
+        <label>Equipo
+            <!-- Cada option viene de la lista del controlador: igual a los ComboBox del curso. -->
+            <select th:field="*{equipoId}">
+                <option value="">Seleccionar equipo...</option>
+                <option th:each="equipo : ${equipos}" th:value="${equipo.id}" th:text="|${equipo.nombre} (${equipo.area})|"></option>
+            </select>
+        </label>
+        <p class="alerta" th:if="${#fields.hasErrors('equipoId')}" th:errors="*{equipoId}"></p>
+        <button type="submit">Guardar</button> <a th:href="@{/apis}">Cancelar</a>
+    </form>
+</main></body></html>

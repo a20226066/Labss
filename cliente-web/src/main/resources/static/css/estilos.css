@@ -1,0 +1,21 @@
+/* CSS local sencillo para que la interfaz funcione sin Bootstrap ni Internet. */
+body {font-family: Arial, Helvetica, sans-serif; color:#243347; background:#f5f7fa; margin:0;}
+.contenedor {max-width:1000px; padding:30px; margin:25px auto; background:white; border-radius:10px; box-shadow:0 2px 16px #dce3eb;}
+.pequeno {max-width:540px;}
+h1 {font-size:1.7rem; margin:0 0 14px;}
+p {line-height:1.5;}
+label {display:block; margin:12px 0; font-weight:600;}
+input,select {display:block; width:100%; box-sizing:border-box; margin-top:6px; padding:10px; border:1px solid #aebcc9; border-radius:5px;}
+button,.boton {background:#1f5aa6; border:0; border-radius:5px; color:white; padding:10px 14px; cursor:pointer; text-decoration:none; display:inline-block; font-size:14px;}
+button.secundario {background:#576778;}
+.barra {display:flex; justify-content:space-between; align-items:center; gap:15px;}
+table {width:100%; border-collapse:collapse; margin:20px 0; font-size:14px;}
+th,td {padding:12px 9px; border-bottom:1px solid #dce3eb; text-align:left;}
+th {background:#eef2f7;}
+.en-linea {display:inline;}
+.enlace-peligro {background:transparent; color:#b51b30; padding:0; border:none; font:inherit; text-decoration:underline;}
+.alerta {padding:10px; background:#fff0f1; color:#9c1a2d; border-radius:5px;}
+.exito {padding:10px; background:#eaf8ee; color:#216f3d; border-radius:5px;}
+.ayuda {font-size:13px; color:#687684;}
+dt {font-weight:bold; margin-top:12px;}
+dd {margin-left:0;}

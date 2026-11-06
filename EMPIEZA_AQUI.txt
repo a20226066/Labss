@@ -1,0 +1,25 @@
+GTICS - LABORATORIO 9 (2026-1): PROYECTO DE PRÁCTICA COMENTADO
+
+1) Ejecuta sql/01_crear_bd.sql en MySQL Workbench.
+2) Abre servidor-api-seguro/pom.xml como proyecto Maven en IntelliJ.
+3) Configura usuario/contraseña de MySQL en application.properties.
+4) Ejecuta ServidorApplication.java (http://localhost:8080).
+5) Abre cliente-web/pom.xml en otra ventana de IntelliJ.
+6) Ejecuta ClienteApplication.java y abre http://localhost:8081/login.
+
+Accesos de ejemplo solo para pruebas locales:
+- admin / Admin123! (puede crear, editar y eliminar)
+- usuario / Usuario123! (solo puede consultar)
+
+DOCUMENTACION:
+- README.md: pasos detallados y pruebas.
+- documentacion/GUIA_POR_CLASES.md: qué parte sale de cada clase.
+- documentacion/DOCUMENTACION_SERVICIO.md: endpoints y JSON.
+- Cada archivo Java incluye comentarios en español para comprenderlo.
+
+NOTAS:
+- Este es un proyecto didáctico, no la entrega individual de la evaluación.
+- El enunciado del laboratorio restringe el uso de IA sin comprensión profunda.
+- Todavía debes compilar y probar los dos proyectos en tu equipo con MySQL.
+- JWT y consumo REST se agregan porque los exige el laboratorio, aunque exceden las diapositivas.
+- El script SQL es una reconstrucción didáctica porque no se subió el SQL del profesor.

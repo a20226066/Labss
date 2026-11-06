@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Ingresar al catálogo</title>
+<link rel="stylesheet" th:href="@{/css/estilos.css}"></head>
+<body><main class="contenedor pequeno">
+    <h1>Catálogo de APIs</h1>
+    <p>Cliente Spring Boot + Thymeleaf · puerto 8081</p>
+    <p class="alerta" th:if="${error != null}" th:text="${error}"></p>
+    <!-- Los campos name se capturan con @RequestParam en LoginController. -->
+    <form th:action="@{/login}" method="post">
+        <label>Usuario <input type="text" name="usuario" required></label>
+        <label>Contraseña <input type="password" name="contrasena" required></label>
+        <button type="submit">Iniciar sesión</button>
+    </form>
+    <p class="ayuda">Práctica local: admin / Admin123! o usuario / Usuario123!</p>
+</main></body></html>
